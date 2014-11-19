@@ -10,4 +10,18 @@ public class DailySchedule{
 	    }
 	}
     }
+    public boolean addAppt(Appointment appt, boolean emergency){
+	for (int i = 0; i < apptList.size; i++){
+	    if (apptList.get(i).conflictsWith(appt)){
+		if (emergency == true){
+		    clearConflicts(appt);
+		    apptList.add(appt);
+		}
+		else{
+		    return false;
+		}
+	    }
+	}
+	apptList.add(appt);
+	return true;
 }
