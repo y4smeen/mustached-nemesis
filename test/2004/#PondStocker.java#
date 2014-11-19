@@ -1,0 +1,19 @@
+public class PondStocker{
+    private Environment theEnv;
+    private double minDensity; // 0.0 <= minDensity < 1.0
+
+    //postcondition: returns the min number of fish
+    //that need to be added to make the population density greater
+    //than minDensity
+    private int numUnder(){
+	
+    }
+    
+    private Location randomLocation(){
+	
+    }
+    
+    public void addFish(int numToAdd){
+	
+    }
+}
