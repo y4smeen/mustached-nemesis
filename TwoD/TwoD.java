@@ -13,7 +13,6 @@ public class TwoD {
 		System.out.println(a[i][j]+" ");
 	    }
 	    System.out.println();
-
 	}
     }
 }
