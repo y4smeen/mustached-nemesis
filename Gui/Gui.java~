@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class Gui extends JFrame {
     public Gui() {
-	setTitle("goooooey");
+	setTitle("My First Gui");
 	setSize(600,400);
 	setLocation(100,100);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
