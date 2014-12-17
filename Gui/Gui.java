@@ -1,13 +1,51 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class Gui extends JFrame {
+public class Gui extends JFrame implements ActionListener {
 
-    private JButton b1,b2;
+    private JButton b1,b2,labeler;
     private Container pane;
-    private JLabel l;
+    private JLabel label;
     private JTextArea text;
     private JPanel canvas;
+
+    private class Canvas extends JPanel {
+	public void PaintComponent(Graphics g) {
+	    g.setFill();
+	}
+    }
+
+    public void actionPerformed(ActionEvent e) {
+	if (e.getSource() == b1) {
+	    System.out.println("You clicked click");
+	    System.out.println("And the text area has: " + text.getText());
+	} else if (e.getSource() == labeler) {
+	    label.setText(text.getText());
+	    // pane.add(new JLabel(text.getText()));
+	    text.setText(" ");
+	} else if (e.getSource() == b2) {
+	    System.out.println("Shutting down");
+	    System.exit(0);
+	}
+    }
+
+    private class Key implements KeyListener {
+	public void keyPressed(KeyEvent e) {
+	    // System.out.println(e);
+	    // System.out.println();
+	}
+	public void keyReleased(KeyEvent e) {
+	}
+	public void keyTyped(KeyEvent e) {
+	    if (box.isSelected()) {
+		String s = text.getText();
+		s = s.toUpperCase();
+		text.setText(s);
+	    }
+	}
+    }
+
 
     public Gui() {
 
@@ -17,29 +55,25 @@ public class Gui extends JFrame {
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 	pane = getContentPane();
-	//pane.setLayout(new GridLayout(3,3));
 	pane.setLayout(new FlowLayout());
-	l = new JLabel("The Label:");
-	pane.add(l);
+	label = new JLabel("The Label:");
+	pane.add(label);
 
 	b1 = new JButton("click me");
 	pane.add(b1);
 	b2 = new JButton("exit");
 	pane.add(b2);
+
 	text = new JTextArea();
 	text.setColumns(40);
 	text.setRows(10);
 	text.setBorder(BorderFactory.createLineBorder(Color.red, 2));
 	pane.add(text);
-	/*
-	JPanel buttongrid = new JPanel();
-	buttongrid.setLayout(new GridLayout(3,3));
-	buttongrid.add(new JButton("button 0"));
-	*/
 
 	canvas = new JPanel();
 	canvas.setPreferredSize(new Dimension(300,300));
 	canvas.setBorder(BorderFactory.createLineBorder(Color.blue, 2));
+	text.addKeyListener(new Key());
 	pane.add(canvas);
 
     }
