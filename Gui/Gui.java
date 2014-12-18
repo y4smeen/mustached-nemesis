@@ -9,10 +9,16 @@ public class Gui extends JFrame implements ActionListener {
     private JLabel label;
     private JTextArea text;
     private JPanel canvas;
+    private JCheckBox box;
+
+    private int x = 10;
+    private int y = 10;
 
     private class Canvas extends JPanel {
 	public void PaintComponent(Graphics g) {
-	    g.setFill();
+	    super.paintComponent(g);
+	    g.setColor(Color.red);
+	    g.fillOval(x,y,30,30);
 	}
     }
 
